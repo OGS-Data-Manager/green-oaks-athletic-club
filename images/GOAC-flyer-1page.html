@@ -306,22 +306,28 @@
             margin-top: 0.04in;
         }
 
-        /* Footer */
-        .front-footer {
-            text-align: center;
-            padding: 0 0.5in;
-        }
-
-        .front-footer .contact-line {
-            font-size: 11pt;
+        .bottom-center .contact-line {
+            font-size: 10pt;
             font-weight: 600;
             color: #1a5bbf;
-            margin-bottom: 0.03in;
+            margin-top: 0.06in;
         }
 
-        .front-footer .disclaimer {
+        .bottom-center .disclaimer {
             font-size: 7pt;
             color: #999;
+            margin-top: 0.02in;
+        }
+
+        .bottom-logo {
+            text-align: center;
+            margin-top: 0.1in;
+        }
+
+        .bottom-logo img {
+            width: 1.1in;
+            height: 1.1in;
+            border-radius: 50%;
         }
 
         /* Print styles */
@@ -437,8 +443,11 @@
                 <div class="qr-label">Scan to Register</div>
             </div>
             <div class="bottom-center">
-                <img src="Logo.png" alt="Green Oaks Athletic Club Logo">
                 <div class="capacity-badge">Only 25 spots per grade band &mdash; register early!</div>
+                <div class="contact-line">Questions? Contact: [CONTACT INFO PLACEHOLDER]</div>
+                <div class="disclaimer">
+                    Green Oaks Athletic Club is approved by the school board and independently operated.
+                </div>
             </div>
             <div class="qr-box">
                 <div class="qr-placeholder-sm">QR CODE<br>GOES HERE</div>
@@ -446,11 +455,8 @@
             </div>
         </div>
 
-        <div class="front-footer">
-            <div class="contact-line">Questions? Contact: [CONTACT INFO PLACEHOLDER]</div>
-            <div class="disclaimer">
-                Green Oaks Athletic Club is approved by the school board and independently operated.
-            </div>
+        <div class="bottom-logo">
+            <img src="Logo.png" alt="Green Oaks Athletic Club Logo">
         </div>
     </div>
 </div>
