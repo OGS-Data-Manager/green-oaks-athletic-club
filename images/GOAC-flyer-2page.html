@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Oaks Athletic Club — Flyer</title>
+    <style>
+        @page {
+            size: 8.5in 11in;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #1a1a1a;
+            background: #ffffff;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* ===== PAGE 1: FRONT ===== */
+        .page {
+            width: 8.5in;
+            height: 11in;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        /* Blue header band */
+        .front-header {
+            background: #1a5bbf;
+            color: #ffffff;
+            text-align: center;
+            padding: 0.35in 0.5in 0.3in;
+            position: relative;
+        }
+
+        .header-layout {
+            position: relative;
+            margin-bottom: 0.15in;
+        }
+
+        .header-logo {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1.4in;
+            height: 1.4in;
+            border-radius: 50%;
+        }
+
+        .header-text {
+            text-align: center;
+        }
+
+        .header-text h1 {
+            font-size: 38pt;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+            text-transform: uppercase;
+        }
+
+        .header-text h1 .line2 {
+            color: #f0d78c;
+        }
+
+        .tagline {
+            font-size: 14pt;
+            font-weight: 400;
+            color: #d4e4ff;
+            margin-top: 0.08in;
+            letter-spacing: 0.03em;
+        }
+
+        /* Main content area */
+        .front-body {
+            padding: 0.25in 0.6in 0.2in;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 12.5pt;
+            line-height: 1.45;
+            color: #333;
+            margin-bottom: 0.2in;
+            max-width: 6.5in;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Details grid */
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.12in;
+            margin-bottom: 0.18in;
+        }
+
+        .detail-card {
+            background: #f0f4fa;
+            border-radius: 10px;
+            padding: 0.15in 0.2in;
+            border-left: 5px solid #1a5bbf;
+        }
+
+        .detail-card .label {
+            font-size: 9pt;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #1a5bbf;
+            font-weight: 700;
+            margin-bottom: 0.04in;
+        }
+
+        .detail-card .value {
+            font-size: 14pt;
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1.25;
+        }
+
+        .detail-card .note {
+            font-size: 9.5pt;
+            color: #666;
+            margin-top: 0.02in;
+        }
+
+        /* Full-width detail card */
+        .detail-card.full {
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+
+        /* Coaches section */
+        .coaches-bar {
+            background: #1a5bbf;
+            color: #ffffff;
+            border-radius: 10px;
+            padding: 0.15in 0.3in;
+            text-align: center;
+            margin-bottom: 0.18in;
+        }
+
+        .coaches-bar .coaches-label {
+            font-size: 9pt;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #f0d78c;
+            font-weight: 700;
+            margin-bottom: 0.04in;
+        }
+
+        .coaches-bar .coaches-names {
+            font-size: 16pt;
+            font-weight: 700;
+        }
+
+        .coaches-bar .coaches-note {
+            font-size: 10pt;
+            color: #d4e4ff;
+            margin-top: 0.03in;
+        }
+
+        /* CTA / Registration area */
+        .cta-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3in;
+            background: #fdf8e8;
+            border: 3px solid #d4a843;
+            border-radius: 12px;
+            padding: 0.18in 0.3in;
+            margin-bottom: 0.15in;
+        }
+
+        .cta-text {
+            text-align: center;
+            flex: 1;
+        }
+
+        .cta-text .cta-headline {
+            font-size: 18pt;
+            font-weight: 800;
+            color: #1a5bbf;
+            margin-bottom: 0.06in;
+        }
+
+        .cta-text .cta-instruction {
+            font-size: 12pt;
+            color: #444;
+            line-height: 1.4;
+        }
+
+        .cta-text .cta-instruction strong {
+            color: #1a5bbf;
+        }
+
+        .qr-placeholder {
+            width: 1.3in;
+            height: 1.3in;
+            border: 3px dashed #1a5bbf;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 9pt;
+            color: #1a5bbf;
+            font-weight: 600;
+            flex-shrink: 0;
+            background: #ffffff;
+        }
+
+        /* Contact & footer */
+        .front-footer {
+            text-align: center;
+            font-size: 10.5pt;
+            color: #666;
+            padding: 0 0.5in;
+        }
+
+        .front-footer .contact-line {
+            font-size: 12pt;
+            font-weight: 600;
+            color: #1a5bbf;
+            margin-bottom: 0.06in;
+        }
+
+        .front-footer .disclaimer {
+            font-size: 8pt;
+            color: #999;
+            margin-top: 0.15in;
+        }
+
+        /* ===== PAGE 2: SCHEDULE (BACK) ===== */
+        .back-header {
+            background: #1a5bbf;
+            color: #ffffff;
+            text-align: center;
+            padding: 0.25in 0.5in 0.2in;
+        }
+
+        .back-header h2 {
+            font-size: 28pt;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .back-header p {
+            font-size: 12pt;
+            color: #d4e4ff;
+            margin-top: 0.06in;
+        }
+
+        .schedule-body {
+            padding: 0.2in 0.6in;
+        }
+
+        /* Column headers */
+        .schedule-columns {
+            display: grid;
+            grid-template-columns: 1.1in 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0.08in;
+        }
+
+        .col-header {
+            font-size: 12pt;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #1a5bbf;
+            text-align: center;
+            padding: 0.08in;
+            letter-spacing: 0.05em;
+        }
+
+        .col-header:first-child {
+            text-align: left;
+        }
+
+        /* Schedule rows */
+        .schedule-row {
+            display: grid;
+            grid-template-columns: 1.1in 1fr 1fr;
+            gap: 0;
+            margin-bottom: 0.08in;
+        }
+
+        .schedule-date {
+            background: #1a5bbf;
+            color: #ffffff;
+            font-size: 24pt;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px 0 0 8px;
+            padding: 0.15in 0.1in;
+        }
+
+        .schedule-activity {
+            background: #f0f4fa;
+            padding: 0.18in 0.2in;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid #dde4ee;
+        }
+
+        .schedule-activity:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+
+        .schedule-activity .sport {
+            font-size: 15pt;
+            font-weight: 800;
+            color: #1a1a1a;
+            text-transform: uppercase;
+        }
+
+        .schedule-activity .time-grade {
+            font-size: 9pt;
+            color: #666;
+            margin-top: 0.03in;
+            font-weight: 600;
+        }
+
+        /* Alternate row shading */
+        .schedule-row:nth-child(even) .schedule-activity {
+            background: #e4ecf7;
+        }
+
+        /* Bottom notes on schedule page */
+        .schedule-notes {
+            margin-top: 0.2in;
+            text-align: center;
+        }
+
+        .schedule-notes .note-item {
+            font-size: 11pt;
+            color: #444;
+            margin-bottom: 0.08in;
+            line-height: 1.4;
+        }
+
+        .schedule-notes .note-item strong {
+            color: #1a5bbf;
+        }
+
+        /* What to bring */
+        .bring-box {
+            background: #f0f4fa;
+            border-radius: 10px;
+            padding: 0.15in 0.35in;
+            margin-top: 0.15in;
+        }
+
+        .bring-box h3 {
+            font-size: 13pt;
+            font-weight: 800;
+            color: #1a5bbf;
+            text-transform: uppercase;
+            margin-bottom: 0.1in;
+            text-align: center;
+        }
+
+        .bring-box p {
+            font-size: 11pt;
+            color: #444;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* Back page footer - removed, replaced by qr-row layout */
+
+        /* QR row on back page */
+        .qr-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 0.15in;
+            padding: 0 0.2in;
+        }
+
+        .qr-box {
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .qr-placeholder-back {
+            width: 1.2in;
+            height: 1.2in;
+            border: 3px dashed #1a5bbf;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 9pt;
+            color: #1a5bbf;
+            font-weight: 600;
+            background: #f0f4fa;
+        }
+
+        .qr-label {
+            font-size: 9pt;
+            font-weight: 700;
+            color: #1a5bbf;
+            margin-top: 0.06in;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .back-footer-center {
+            text-align: center;
+        }
+
+        .back-footer-center img {
+            width: 1.3in;
+            height: 1.3in;
+            border-radius: 50%;
+            margin-bottom: 0.05in;
+        }
+
+        .back-footer-center p {
+            font-size: 8pt;
+            color: #999;
+        }
+
+        /* Print styles */
+        @media print {
+            body { background: #ffffff; }
+            .page { box-shadow: none; }
+        }
+
+        /* Screen preview styles */
+        @media screen {
+            body {
+                background: #e0e0e0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5in;
+                padding: 0.5in 0;
+            }
+            .page {
+                box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+                background: #ffffff;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE 1: FRONT ===== -->
+<div class="page" id="front">
+    <div class="front-header">
+        <div class="header-layout">
+            <img class="header-logo" src="Logo.png" alt="Green Oaks Athletic Club Logo">
+            <div class="header-text">
+                <h1>Green Oaks<br><span class="line2">Athletic Club</span></h1>
+                <div class="tagline">After-School Sports &amp; Fitness for Grades K–5</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="front-body">
+        <p class="intro">
+            Green Oaks Athletic Club is a new after-school sports program at
+            Oak Grove School, led by Coach Izenstark and Coach Callahan. Each week
+            features a different sport — your child will play, learn, and have a blast.
+            No experience needed, just a love of being active!
+        </p>
+
+        <div class="details-grid">
+            <div class="detail-card">
+                <div class="label">When</div>
+                <div class="value">Fridays</div>
+                <div class="note">3:30 PM – 4:30 PM</div>
+            </div>
+            <div class="detail-card">
+                <div class="label">Where</div>
+                <div class="value">Oak Grove School</div>
+                <div class="note">Pat Patt Gym (K–2) &amp; JH Gym (3–5)</div>
+            </div>
+            <div class="detail-card">
+                <div class="label">Grades</div>
+                <div class="value">K–2 &amp; 3rd–5th</div>
+                <div class="note">Separate groups by grade band</div>
+            </div>
+            <div class="detail-card">
+                <div class="label">Session 1</div>
+                <div class="value">April 10 – May 15</div>
+                <div class="note">6 weeks of activities</div>
+            </div>
+            <div class="detail-card full">
+                <div class="label">Cost</div>
+                <div class="value">$120 for the full 6-week session</div>
+                <div class="note">That's just $20 per week</div>
+            </div>
+        </div>
+
+        <div class="coaches-bar">
+            <div class="coaches-label">Your Coaches</div>
+            <div class="coaches-names">Coach Izenstark &amp; Coach Callahan</div>
+            <div class="coaches-note">Oak Grove School PE Teachers</div>
+        </div>
+
+        <div class="cta-area">
+            <div class="cta-text">
+                <div class="cta-headline">Ready to Sign Up?</div>
+                <div class="cta-instruction">
+                    Scan the QR code to register your child.<br>
+                    Spots are limited — <strong>sign up early!</strong>
+                </div>
+            </div>
+            <img src="qr-registration-blue.png" alt="Scan to Register" style="width: 1.3in; height: 1.3in; border-radius: 10px; flex-shrink: 0;">
+        </div>
+
+        <div class="front-footer">
+            <div class="contact-line">K–2 Questions: callahan@ogschool.org &bull; 3–5 Questions: izenstark@ogschool.org</div>
+            <div class="disclaimer">
+                Green Oaks Athletic Club is independently operated.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== PAGE 2: BACK (SCHEDULE) ===== -->
+<div class="page" id="back">
+    <div class="back-header">
+        <h2>Session 1 Schedule</h2>
+        <p>April 10 – May 15, 2026 &bull; Every Friday &bull; 3:30 – 4:30 PM</p>
+    </div>
+
+    <div class="schedule-body">
+        <div class="schedule-columns">
+            <div class="col-header">Date</div>
+            <div class="col-header">Grades K–2</div>
+            <div class="col-header">Grades 3–5</div>
+        </div>
+
+        <div class="schedule-row">
+            <div class="schedule-date">4/10</div>
+            <div class="schedule-activity">
+                <div class="sport">Soccer</div>
+                <div class="time-grade">3:30–4:30 PM &bull; K–2</div>
+            </div>
+            <div class="schedule-activity">
+                <div class="sport">Kickball</div>
+                <div class="time-grade">3:30–4:30 PM &bull; 3rd–5th</div>
+            </div>
+        </div>
+
+        <div class="schedule-row">
+            <div class="schedule-date">4/17</div>
+            <div class="schedule-activity">
+                <div class="sport">Kickball</div>
+                <div class="time-grade">3:30–4:30 PM &bull; K–2</div>
+            </div>
+            <div class="schedule-activity">
+                <div class="sport">Floor Hockey</div>
+                <div class="time-grade">3:30–4:30 PM &bull; 3rd–5th</div>
+            </div>
+        </div>
+
+        <div class="schedule-row">
+            <div class="schedule-date">4/24</div>
+            <div class="schedule-activity">
+                <div class="sport">"Bennis"</div>
+                <div class="time-grade">3:30–4:30 PM &bull; K–2</div>
+            </div>
+            <div class="schedule-activity">
+                <div class="sport">Basketball</div>
+                <div class="time-grade">3:30–4:30 PM &bull; 3rd–5th</div>
+            </div>
+        </div>
+
+        <div class="schedule-row">
+            <div class="schedule-date">5/1</div>
+            <div class="schedule-activity">
+                <div class="sport">Basketball</div>
+                <div class="time-grade">3:30–4:30 PM &bull; K–2</div>
+            </div>
+            <div class="schedule-activity">
+                <div class="sport">Soccer</div>
+                <div class="time-grade">3:30–4:30 PM &bull; 3rd–5th</div>
+            </div>
+        </div>
+
+        <div class="schedule-row">
+            <div class="schedule-date">5/8</div>
+            <div class="schedule-activity">
+                <div class="sport">Flag Football</div>
+                <div class="time-grade">3:30–4:30 PM &bull; K–2</div>
+            </div>
+            <div class="schedule-activity">
+                <div class="sport">"Bennis"</div>
+                <div class="time-grade">3:30–4:30 PM &bull; 3rd–5th</div>
+            </div>
+        </div>
+
+        <div class="schedule-row">
+            <div class="schedule-date">5/15</div>
+            <div class="schedule-activity">
+                <div class="sport">Capture the Flag</div>
+                <div class="time-grade">3:30–4:30 PM &bull; K–2</div>
+            </div>
+            <div class="schedule-activity">
+                <div class="sport">Capture the Flag</div>
+                <div class="time-grade">3:30–4:30 PM &bull; 3rd–5th</div>
+            </div>
+        </div>
+
+        <div class="schedule-notes">
+            <div class="note-item"><strong>"Bennis"</strong> = baseball with a tennis racket!</div>
+            <div class="note-item"><strong>Space is limited:</strong> Only 30 spots per grade band (K–2 and 3rd–5th).<br>Register early to secure your child's spot!</div>
+            <div class="note-item"><strong>Payment:</strong> $120 for the full session via Zelle. Details provided at registration.</div>
+            <div class="note-item"><strong>Weather:</strong> Activities move indoors during rain or extreme heat.</div>
+        </div>
+
+        <div class="bring-box">
+            <h3>What to Bring</h3>
+            <p>
+                Comfortable clothes &amp; athletic shoes &bull; Water bottle
+            </p>
+        </div>
+
+        <div class="qr-row">
+            <div class="qr-box">
+                <img src="qr-registration-blue.png" alt="Scan to Register" style="width: 1.2in; height: 1.2in; border-radius: 8px;">
+                <div class="qr-label">Scan to Register</div>
+            </div>
+            <div class="back-footer-center">
+                <img src="Logo.png" alt="Green Oaks Athletic Club Logo">
+                <p>Green Oaks Athletic Club &bull; Est. 2026 &bull; Green Oaks, Illinois</p>
+            </div>
+            <div class="qr-box">
+                <img src="qr-zelle.png" alt="Scan to Pay via Zelle" style="width: 1.2in; height: 1.2in; border-radius: 8px;">
+                <div class="qr-label">Scan to Pay via Zelle</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
