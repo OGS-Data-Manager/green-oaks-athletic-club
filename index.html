@@ -235,6 +235,41 @@ footer p+p{margin-top:.4rem;opacity:.75}
 .sched-meta{display:flex;gap:1.6rem;flex-wrap:wrap;margin-top:1.5rem;color:var(--ink-soft);font-weight:800}
 .sched-meta span{display:inline-flex;align-items:center;gap:.5rem}
 .sched-meta .dot{width:8px;height:8px;border-radius:50%;background:var(--oak)}
+
+/* club helper widget */
+.gh-launch{position:fixed;right:18px;bottom:18px;z-index:60;display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--amber);color:#3a2600;font-family:"Nunito",sans-serif;font-weight:800;font-size:.95rem;
+  border:none;border-radius:999px;padding:.7rem 1.1rem;cursor:pointer;box-shadow:0 10px 26px -8px rgba(242,169,59,.9)}
+.gh-launch:hover{transform:translateY(-2px);background:#FFB94A}
+.gh-launch .gh-dot{width:9px;height:9px;border-radius:50%;background:var(--oak);box-shadow:0 0 0 3px rgba(62,142,78,.28)}
+.gh-panel{position:fixed;right:18px;bottom:80px;z-index:60;width:min(360px,calc(100vw - 36px));
+  height:min(520px,calc(100vh - 120px));background:var(--paper-2);border:1px solid var(--line);border-radius:18px;
+  box-shadow:0 24px 60px -20px rgba(20,24,31,.5);display:none;flex-direction:column;overflow:hidden}
+.gh-panel.open{display:flex}
+.gh-head{background:linear-gradient(135deg,var(--royal),var(--navy));color:#fff;padding:.85rem 1rem;display:flex;align-items:center;gap:.6rem}
+.gh-head .gh-avatar{width:34px;height:34px;border-radius:50%;background:var(--amber);color:#3a2600;font-family:"Anton",sans-serif;
+  display:flex;align-items:center;justify-content:center;font-size:.95rem;flex:none}
+.gh-head h4{font-family:"Anton",sans-serif;text-transform:uppercase;letter-spacing:.04em;font-size:1rem;line-height:1;color:#fff}
+.gh-head .gh-sub{font-size:.72rem;opacity:.85;margin-top:.15rem}
+.gh-close{margin-left:auto;background:transparent;border:none;color:#fff;font-size:1.5rem;line-height:1;cursor:pointer;opacity:.85}
+.gh-close:hover{opacity:1}
+.gh-body{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.6rem}
+.gh-msg{max-width:86%;padding:.62rem .82rem;border-radius:14px;font-size:.92rem;line-height:1.42}
+.gh-bot{background:var(--white);border:1px solid var(--line);color:var(--ink);align-self:flex-start;border-bottom-left-radius:4px}
+.gh-user{background:var(--navy);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.gh-bot a{color:var(--royal);font-weight:700}
+.gh-chips{display:flex;flex-wrap:wrap;gap:.4rem;align-self:flex-start;max-width:100%;margin:-.1rem 0 .2rem}
+.gh-chip{background:rgba(36,83,201,.08);border:1px solid rgba(36,83,201,.25);color:var(--navy);
+  font-family:"Nunito",sans-serif;font-weight:800;font-size:.8rem;border-radius:999px;padding:.34rem .68rem;cursor:pointer}
+.gh-chip:hover{background:rgba(36,83,201,.15)}
+.gh-note{font-size:.66rem;color:var(--ink-soft);text-align:center;padding:.15rem .5rem .3rem}
+.gh-foot{border-top:1px solid var(--line);padding:.55rem;display:flex;gap:.5rem;background:var(--paper-2)}
+.gh-input{flex:1;border:1px solid var(--line);border-radius:999px;padding:.55rem .9rem;font-family:"Nunito",sans-serif;
+  font-size:.9rem;outline:none;background:var(--white);color:var(--ink)}
+.gh-input:focus{border-color:var(--royal)}
+.gh-send{background:var(--amber);color:#3a2600;border:none;border-radius:999px;padding:0 1rem;font-weight:800;cursor:pointer;font-family:"Nunito",sans-serif}
+.gh-send:hover{background:#FFB94A}
+@media(max-width:520px){.gh-panel{right:10px;bottom:72px;width:calc(100vw - 20px);height:calc(100vh - 96px)}.gh-launch{right:12px;bottom:12px}}
 </style>
 </head>
 <body>
@@ -431,6 +466,100 @@ footer p+p{margin-top:.4rem;opacity:.75}
   }else{
     document.querySelectorAll(".reveal").forEach(function(n){n.classList.add("in");});
   }
+})();
+</script>
+
+<script>
+/* Club Helper — self-contained, retrieval-only. No LLM, no network, no storage.
+   It can only surface answers written in KB below; anything unmatched falls back. */
+(function(){
+  var FORM="https://docs.google.com/forms/d/e/1FAIpQLSfBR3N5cbLwnxUvVKYba4ofbSHJWWrLhMGEutZh_xMuMURwWg/viewform?usp=header";
+  var KB=[
+    {id:"schedule",label:"Schedule & dates",
+     keywords:["schedule","dates","date","when","day","days","friday","fridays","start","starts","starting","begin","begins","first day","last day","end","ends","over","august","aug","september","sept","october","oct","calendar","how many weeks","weeks","week","time","times","what time","3 30","4 30","hours","how long"],
+     answer:"The K–2 fall session runs six Fridays, <strong>Aug 28 – Oct 2, 2026</strong>, from <strong>3:30–4:30 PM</strong> in the school gym. A new sport each week: kickball → soccer → bennis → basketball → floor hockey → capture the flag.",
+     follow:["early","cost","signup"]},
+    {id:"early",label:"Sept 18 early release",
+     keywords:["early","release","dismissal","dismissed","18","sept 18","september 18","9 18","half day","short day","time change","different time","earlier","changed"],
+     answer:"Great question — <strong>Fri, Sept 18 is an early-release day at school, but club still meets at the normal 3:30–4:30 PM.</strong> Teachers aren't dismissed early, so the club time doesn't change.",
+     follow:["schedule","signup"]},
+    {id:"cost",label:"Cost",
+     keywords:["cost","costs","price","prices","pricing","how much","fee","fees","pay","payment","paying","expensive","cheap","afford","dollar","dollars","money","120","refund","zelle"],
+     answer:"It's <strong>$120 for the whole six-week session — just $20 a week.</strong> When you sign up, a coach follows up with payment details before the first Friday.",
+     follow:["signup","schedule"]},
+    {id:"signup",label:"How to sign up",
+     keywords:["sign","signup","sign up","register","registration","registering","enroll","enrollment","enrolling","join","joining","spot","spots","reserve","save a spot","form","apply","get in","waitlist","wait list"],
+     answer:"Sign up with our quick form and a coach will confirm your child's spot:<br><a href='"+FORM+"' target='_blank' rel='noopener'>Open the sign-up form →</a><br>Spots are limited to <strong>50 kids</strong>, so it's best not to wait.",
+     follow:["cost","who","contact"]},
+    {id:"who",label:"Who can join",
+     keywords:["who","grade","grades","what grade","which grade","what grades","which grades","age","ages","how old","kindergarten","kinder","k2","first grade","second grade","1st","2nd","3rd","4th","5th","3 5","older kids","younger","eligible","can my"],
+     answer:"This session is for <strong>grades K–2</strong>. A session for <strong>grades 3–5</strong> is coming later — sign up and you'll be first to hear when it opens.",
+     follow:["signup","schedule"]},
+    {id:"what",label:"What they play",
+     keywords:["what sport","what sports","sports","sport","play","playing","played","activity","activities","game","games","bennis","tennis","baseball","kickball","soccer","basketball","hockey","floor hockey","capture the flag","capture","flag football","lineup","rotation","what do they do","what will they"],
+     answer:"A different sport every Friday: <strong>kickball, soccer, 'bennis' (baseball with a tennis racket!), basketball, floor hockey, and capture the flag.</strong> No experience needed — all skill levels welcome.",
+     follow:["schedule","who"]},
+    {id:"bring",label:"What to bring",
+     keywords:["bring","what to bring","to bring","should we bring","should i bring","wear","wearing","what to wear","clothes","clothing","shoes","sneakers","cleats","gear","equipment","water","water bottle","bottle","pack","uniform"],
+     answer:"Just comfy clothes, athletic shoes, and a water bottle — that's the whole list. We provide the equipment.",
+     follow:["schedule","weather"]},
+    {id:"weather",label:"Bad weather?",
+     keywords:["weather","rain","rains","rainy","raining","snow","snowy","cold","too hot","hot day","heat","storm","indoor","indoors","outside","outdoor","cancel","cancelled","canceled","cancellation"],
+     answer:"Club runs rain or shine. During rain or extreme heat, activities simply move indoors to the gym — it's not cancelled for weather.",
+     follow:["bring","schedule"]},
+    {id:"where",label:"Where is it?",
+     keywords:["where","location","located","place","address","held","gym","which school","building","room","field","fields"],
+     answer:"It's at <strong>Oak Grove School</strong>, in the gym (with fields when weather and the activity allow). Kids go straight from class to the gym after school.",
+     follow:["schedule","bring"]},
+    {id:"contact",label:"Contact a coach",
+     keywords:["contact","email","reach","reach out","question","questions","talk to","call","phone","who do i","coach","coaches","callahan","izenstark","message","get in touch","speak"],
+     answer:"Happy to help! K–2 questions go to <a href='mailto:callahan@ogschool.org'>callahan@ogschool.org</a> (Coach Callahan). Grades 3–5: <a href='mailto:izenstark@ogschool.org'>izenstark@ogschool.org</a> (Coach Izenstark).",
+     follow:["signup","cost"]},
+    {id:"experience",label:"Need experience?",
+     keywords:["experience","experienced","good at","skill","skilled","skills","beginner","never played","new to","athletic","not athletic","shy","nervous","competitive","league","serious","keep up"],
+     answer:"Not at all — it's not a competitive league. It's about moving, learning the basics, and having fun with friends. Every kid fits right in, athlete or not.",
+     follow:["what","signup"]}
+  ];
+  var byId={}; KB.forEach(function(e){byId[e.id]=e;});
+  var STARTERS=["schedule","cost","signup","what","contact"];
+  var GREET=/\b(hi|hey|hello|yo|howdy|hiya|thanks|thank you|thx|good morning|good afternoon)\b/;
+
+  function el(tag,cls){var n=document.createElement(tag);if(cls)n.className=cls;return n;}
+  function norm(s){return (" "+s.toLowerCase()+" ").replace(/[^a-z0-9$ ]+/g," ").replace(/\s+/g," ");}
+  function score(q,e){var s=0;for(var i=0;i<e.keywords.length;i++){var k=e.keywords[i];
+    if(k.indexOf(" ")>=0){if(q.indexOf(k)>=0)s+=2;}else if(q.indexOf(" "+k+" ")>=0){s+=k.length<=2?0.6:1;}}return s;}
+  function bestMatch(t){var q=norm(t),best=null,bs=0;KB.forEach(function(e){var sc=score(q,e);if(sc>bs){bs=sc;best=e;}});return bs>=1?best:null;}
+
+  var panel,body,input,greeted=false;
+  function scrollDown(){body.scrollTop=body.scrollHeight;}
+  function botMsg(html){var m=el("div","gh-msg gh-bot");m.innerHTML=html;body.appendChild(m);scrollDown();}
+  function userMsg(text){var m=el("div","gh-msg gh-user");m.textContent=text;body.appendChild(m);scrollDown();}
+  function chips(ids){if(!ids||!ids.length)return;var w=el("div","gh-chips");ids.forEach(function(id){var e=byId[id];if(!e)return;
+    var c=el("button","gh-chip");c.type="button";c.textContent=e.label;
+    c.addEventListener("click",function(){userMsg(e.label);botMsg(e.answer);chips(e.follow);});w.appendChild(c);});
+    body.appendChild(w);scrollDown();}
+  function fallback(){botMsg("I can help with the <strong>schedule, cost, sign-up, what to bring,</strong> and <strong>how to reach a coach</strong>. For anything else, email Coach Callahan at <a href='mailto:callahan@ogschool.org'>callahan@ogschool.org</a>.");chips(STARTERS);}
+  function ask(text){text=(text||"").trim();if(!text)return;userMsg(text);var m=bestMatch(text);
+    if(m){botMsg(m.answer);chips(m.follow);}
+    else if(GREET.test(norm(text))){botMsg("Hi there! 👋 What would you like to know about the K–2 fall session?");chips(STARTERS);}
+    else fallback();}
+
+  function init(){
+    var launch=el("button","gh-launch");launch.type="button";launch.setAttribute("aria-label","Ask about the club");
+    launch.innerHTML="<span class='gh-dot'></span>Ask about the club";
+    panel=el("div","gh-panel");panel.setAttribute("role","dialog");panel.setAttribute("aria-label","Club helper");
+    panel.innerHTML="<div class='gh-head'><div class='gh-avatar'>GO</div><div><h4>Club Helper</h4><div class='gh-sub'>Ask about the K–2 fall session</div></div><button class='gh-close' type='button' aria-label='Close'>&times;</button></div><div class='gh-body'></div><div class='gh-note'>Answers cover club info only · nothing you type is stored</div><div class='gh-foot'><input class='gh-input' type='text' placeholder='Type a question…' aria-label='Type a question'><button class='gh-send' type='button'>Send</button></div>";
+    document.body.appendChild(launch);document.body.appendChild(panel);
+    body=panel.querySelector(".gh-body");input=panel.querySelector(".gh-input");
+    function open(){panel.classList.add("open");if(!greeted){greeted=true;botMsg("Hi! 👋 I'm the club helper. Ask me anything about the K–2 fall session — or tap a topic below.");chips(STARTERS);}setTimeout(function(){input.focus();},50);}
+    function close(){panel.classList.remove("open");}
+    launch.addEventListener("click",function(){panel.classList.contains("open")?close():open();});
+    panel.querySelector(".gh-close").addEventListener("click",close);
+    panel.querySelector(".gh-send").addEventListener("click",function(){ask(input.value);input.value="";input.focus();});
+    input.addEventListener("keydown",function(ev){if(ev.key==="Enter"){ask(input.value);input.value="";}});
+    document.addEventListener("keydown",function(ev){if(ev.key==="Escape"&&panel.classList.contains("open"))close();});
+  }
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 })();
 </script>
 
