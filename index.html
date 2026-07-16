@@ -420,7 +420,7 @@ footer p+p{margin-top:.4rem;opacity:.75}
       <details><summary>When is the K–2 fall session?</summary><p>Six Fridays, August 28 through October 2, 2026, meeting 3:30–4:30 PM every week. Note: <strong>Friday, September 18 is an early-release day at school, but club still meets at the regular 3:30 PM</strong> — teachers aren't dismissed early, so the time doesn't change.</p></details>
       <details><summary>How much does it cost, and how do I pay?</summary><p>$120 for the full six-week session — just $20 a week. You register and pay online by card in one step, right from this site, and you'll get an emailed receipt on the spot.</p></details>
       <details><summary>Is this session only for K–2?</summary><p>Yes — Fall Session #1 is for grades K–2 only. A session for grades 3–5 will be announced separately, so sign up to hear about it first.</p></details>
-      <details><summary>Who do I contact with questions?</summary><p>K–2 questions: <a href="mailto:callahan@ogschool.org">callahan@ogschool.org</a><br>3–5 questions: <a href="mailto:izenstark@ogschool.org">izenstark@ogschool.org</a></p></details>
+      <details><summary>Who do I contact with questions?</summary><p>Email the coaches — Coach Izenstark and Coach Callahan — and either will get back to you:<br><a href="mailto:izenstark@ogschool.org,callahan@ogschool.org">izenstark@ogschool.org · callahan@ogschool.org</a></p></details>
     </div>
   </div>
 </section>
@@ -432,7 +432,7 @@ footer p+p{margin-top:.4rem;opacity:.75}
     <p class="lead">Register your child for the K–2 fall session and pay the $120 in one quick step — six Fridays of sports starting August 28. You'll get an emailed receipt right away. Spots are limited to 50, so don't wait.</p>
     <div class="cta-row">
       <a class="btn btn-primary" href="https://buy.stripe.com/REPLACE_ME" target="_blank" rel="noopener">Register &amp; Pay — $120</a>
-      <a class="btn btn-ghost" href="mailto:callahan@ogschool.org">Email Coach Callahan</a>
+      <a class="btn btn-ghost" href="mailto:izenstark@ogschool.org,callahan@ogschool.org">Email the Coaches</a>
     </div>
     <p style="margin-top:16px;font-size:.95rem;opacity:.85">Session full? <a href="https://forms.gle/REPLACE_ME_WAITLIST" target="_blank" rel="noopener">Join the waitlist →</a></p>
   </div>
@@ -515,7 +515,7 @@ footer p+p{margin-top:.4rem;opacity:.75}
      follow:["schedule","bring"]},
     {id:"contact",label:"Contact a coach",
      keywords:["contact","email","reach","reach out","question","questions","talk to","call","phone","who do i","coach","coaches","callahan","izenstark","message","get in touch","speak"],
-     answer:"Happy to help! K–2 questions go to <a href='mailto:callahan@ogschool.org'>callahan@ogschool.org</a> (Coach Callahan). Grades 3–5: <a href='mailto:izenstark@ogschool.org'>izenstark@ogschool.org</a> (Coach Izenstark).",
+     answer:"Happy to help! Email the coaches — Coach Izenstark and Coach Callahan — and either will get back to you: <a href='mailto:izenstark@ogschool.org,callahan@ogschool.org'>email the coaches →</a>.",
      follow:["signup","cost"]},
     {id:"experience",label:"Need experience?",
      keywords:["experience","experienced","good at","skill","skilled","skills","beginner","never played","new to","athletic","not athletic","shy","nervous","competitive","league","serious","keep up"],
@@ -540,7 +540,7 @@ footer p+p{margin-top:.4rem;opacity:.75}
     var c=el("button","gh-chip");c.type="button";c.textContent=e.label;
     c.addEventListener("click",function(){userMsg(e.label);botMsg(e.answer);chips(e.follow);});w.appendChild(c);});
     body.appendChild(w);scrollDown();}
-  function fallback(){botMsg("I can help with the <strong>schedule, cost, sign-up, what to bring,</strong> and <strong>how to reach a coach</strong>. For anything else, email Coach Callahan at <a href='mailto:callahan@ogschool.org'>callahan@ogschool.org</a>.");chips(STARTERS);}
+  function fallback(){botMsg("I can help with the <strong>schedule, cost, sign-up, what to bring,</strong> and <strong>how to reach a coach</strong>. For anything else, email the coaches at <a href='mailto:izenstark@ogschool.org,callahan@ogschool.org'>izenstark@ogschool.org · callahan@ogschool.org</a>.");chips(STARTERS);}
   function ask(text){text=(text||"").trim();if(!text)return;userMsg(text);var m=bestMatch(text);
     if(m){botMsg(m.answer);chips(m.follow);}
     else if(GREET.test(norm(text))){botMsg("Hi there! 👋 What would you like to know about the K–2 fall session?");chips(STARTERS);}
