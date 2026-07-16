@@ -302,7 +302,7 @@ footer p+p{margin-top:.4rem;opacity:.75}
     </div>
 
     <div class="cta-row">
-      <a class="btn btn-primary" href="#interest">Sign up for K–2 Fall</a>
+      <a class="btn btn-primary" href="#interest">Register for K–2 Fall</a>
       <a class="btn btn-ghost" href="#schedule">See the schedule</a>
     </div>
 
@@ -401,8 +401,8 @@ footer p+p{margin-top:.4rem;opacity:.75}
     <span class="eyebrow">How It Works</span>
     <h2 class="title">Three steps to get started</h2>
     <div class="steps">
-      <div class="step reveal"><div class="n">01</div><h3>Sign up</h3><p>Add your child through our quick form to claim a spot in the K–2 fall session. Spots are limited to 50.</p></div>
-      <div class="step reveal"><div class="n">02</div><h3>We confirm</h3><p>A coach follows up with payment details and everything you'll need before the first Friday, August 28.</p></div>
+      <div class="step reveal"><div class="n">01</div><h3>Register &amp; pay</h3><p>Claim your child's spot by registering and paying the $120 online in one quick step. Spots are limited to 50.</p></div>
+      <div class="step reveal"><div class="n">02</div><h3>Get your confirmation</h3><p>You'll get an emailed receipt right away, and a coach follows up with everything you'll need before the first Friday, August 28.</p></div>
       <div class="step reveal"><div class="n">03</div><h3>Show up &amp; play</h3><p>Kids head straight from class to the gym. A new sport every Friday, all session long.</p></div>
     </div>
   </div>
@@ -418,7 +418,7 @@ footer p+p{margin-top:.4rem;opacity:.75}
       <details><summary>How are the groups split?</summary><p>K–2 and 3rd–5th graders play in separate groups so the games fit each age's size and skill level.</p></details>
       <details><summary>What if the weather is bad?</summary><p>The club runs rain or shine — activities simply move indoors to the school gyms during rain or extreme heat.</p></details>
       <details><summary>When is the K–2 fall session?</summary><p>Six Fridays, August 28 through October 2, 2026, meeting 3:30–4:30 PM every week. Note: <strong>Friday, September 18 is an early-release day at school, but club still meets at the regular 3:30 PM</strong> — teachers aren't dismissed early, so the time doesn't change.</p></details>
-      <details><summary>How much does it cost, and how do I pay?</summary><p>$120 for the full six-week session — just $20 a week. When you sign up, a coach follows up to confirm your child's spot and share payment details before the first Friday.</p></details>
+      <details><summary>How much does it cost, and how do I pay?</summary><p>$120 for the full six-week session — just $20 a week. You register and pay online by card in one step, right from this site, and you'll get an emailed receipt on the spot.</p></details>
       <details><summary>Is this session only for K–2?</summary><p>Yes — Fall Session #1 is for grades K–2 only. A session for grades 3–5 will be announced separately, so sign up to hear about it first.</p></details>
       <details><summary>Who do I contact with questions?</summary><p>K–2 questions: <a href="mailto:callahan@ogschool.org">callahan@ogschool.org</a><br>3–5 questions: <a href="mailto:izenstark@ogschool.org">izenstark@ogschool.org</a></p></details>
     </div>
@@ -429,11 +429,12 @@ footer p+p{margin-top:.4rem;opacity:.75}
   <div class="wrap">
     <span class="pill">K–2 Fall Session #1 · Now enrolling</span>
     <h2 class="title">Ready to claim a spot?</h2>
-    <p class="lead">Sign up for the K–2 fall session — six Fridays of sports starting August 28, $120 for the whole session. Spots are limited to 50, so don't wait.</p>
+    <p class="lead">Register your child for the K–2 fall session and pay the $120 in one quick step — six Fridays of sports starting August 28. You'll get an emailed receipt right away. Spots are limited to 50, so don't wait.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfBR3N5cbLwnxUvVKYba4ofbSHJWWrLhMGEutZh_xMuMURwWg/viewform?usp=header" target="_blank" rel="noopener">Sign up for K–2 Fall</a>
+      <a class="btn btn-primary" href="https://buy.stripe.com/REPLACE_ME" target="_blank" rel="noopener">Register &amp; Pay — $120</a>
       <a class="btn btn-ghost" href="mailto:callahan@ogschool.org">Email Coach Callahan</a>
     </div>
+    <p style="margin-top:16px;font-size:.95rem;opacity:.85">Session full? <a href="https://forms.gle/REPLACE_ME_WAITLIST" target="_blank" rel="noopener">Join the waitlist →</a></p>
   </div>
 </section>
 
@@ -473,7 +474,8 @@ footer p+p{margin-top:.4rem;opacity:.75}
 /* Club Helper — self-contained, retrieval-only. No LLM, no network, no storage.
    It can only surface answers written in KB below; anything unmatched falls back. */
 (function(){
-  var FORM="https://docs.google.com/forms/d/e/1FAIpQLSfBR3N5cbLwnxUvVKYba4ofbSHJWWrLhMGEutZh_xMuMURwWg/viewform?usp=header";
+  var PAY="https://buy.stripe.com/REPLACE_ME";
+  var WAITLIST="https://forms.gle/REPLACE_ME_WAITLIST";
   var KB=[
     {id:"schedule",label:"Schedule & dates",
      keywords:["schedule","dates","date","when","day","days","friday","fridays","start","starts","starting","begin","begins","first day","last day","end","ends","over","august","aug","september","sept","october","oct","calendar","how many weeks","weeks","week","time","times","what time","3 30","4 30","hours","how long"],
@@ -485,11 +487,11 @@ footer p+p{margin-top:.4rem;opacity:.75}
      follow:["schedule","signup"]},
     {id:"cost",label:"Cost",
      keywords:["cost","costs","price","prices","pricing","how much","fee","fees","pay","payment","paying","expensive","cheap","afford","dollar","dollars","money","120","refund","zelle"],
-     answer:"It's <strong>$120 for the whole six-week session — just $20 a week.</strong> When you sign up, a coach follows up with payment details before the first Friday.",
+     answer:"It's <strong>$120 for the whole six-week session — just $20 a week.</strong> You pay online by card when you register — a receipt is emailed to you right away.",
      follow:["signup","schedule"]},
     {id:"signup",label:"How to sign up",
      keywords:["sign","signup","sign up","register","registration","registering","enroll","enrollment","enrolling","join","joining","spot","spots","reserve","save a spot","form","apply","get in","waitlist","wait list"],
-     answer:"Sign up with our quick form and a coach will confirm your child's spot:<br><a href='"+FORM+"' target='_blank' rel='noopener'>Open the sign-up form →</a><br>Spots are limited to <strong>50 kids</strong>, so it's best not to wait.",
+     answer:"Register and pay in one quick step right here — no separate form:<br><a href='"+PAY+"' target='_blank' rel='noopener'>Register &amp; pay ($120) →</a><br>Spots are limited to <strong>50 kids</strong>. If the session is full, you can <a href='"+WAITLIST+"' target='_blank' rel='noopener'>join the waitlist</a> instead.",
      follow:["cost","who","contact"]},
     {id:"who",label:"Who can join",
      keywords:["who","grade","grades","what grade","which grade","what grades","which grades","age","ages","how old","kindergarten","kinder","k2","first grade","second grade","1st","2nd","3rd","4th","5th","3 5","older kids","younger","eligible","can my"],
