@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>GOAC Facebook Card</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; overflow:hidden; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(135deg, #16327A 0%, #0f2456 55%, #1a3a6b 100%);
+    color:#fff; position:relative;
+  }
+  .glow {
+    position:absolute; width:620px; height:620px; border-radius:50%;
+    background: radial-gradient(circle, rgba(255,193,7,.20) 0%, rgba(255,193,7,0) 70%);
+    right:-140px; top:-190px;
+  }
+  .wrap { position:relative; height:100%; display:flex; align-items:center; padding:0 66px; gap:44px; }
+  .left { flex:1; }
+  .pill {
+    display:inline-block; background:#FFC107; color:#16327A;
+    font-weight:800; font-size:20px; letter-spacing:.10em; text-transform:uppercase;
+    padding:9px 20px; border-radius:100px; margin-bottom:22px;
+  }
+  h1 { font-size:69px; line-height:.98; font-weight:850; letter-spacing:-.022em; }
+  h1 .sub { display:block; font-size:41px; font-weight:750; color:#9FC4FF; margin-top:11px; letter-spacing:-.012em; }
+  .facts { display:flex; gap:15px; margin-top:30px; }
+  .fact {
+    background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.20);
+    border-radius:13px; padding:14px 19px; min-width:126px;
+  }
+  .fact .k { font-size:14px; text-transform:uppercase; letter-spacing:.09em; color:#9FC4FF; font-weight:700; }
+  .fact .v { font-size:29px; font-weight:820; margin-top:4px; line-height:1.06; }
+  .fact .n { font-size:14px; color:rgba(255,255,255,.72); margin-top:2px; }
+  .cta { margin-top:32px; display:flex; align-items:center; gap:17px; }
+  .url { font-size:31px; font-weight:800; color:#FFC107; }
+  .spots {
+    font-size:17px; font-weight:750; background:rgba(255,255,255,.13);
+    border-radius:100px; padding:9px 17px; border:1px solid rgba(255,255,255,.24);
+  }
+  .right { width:296px; display:flex; flex-direction:column; align-items:center; gap:20px; }
+  .right img { width:252px; height:auto; filter: drop-shadow(0 9px 26px rgba(0,0,0,.42)); }
+  .sports { font-size:16px; color:rgba(255,255,255,.82); text-align:center; line-height:1.55; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="wrap">
+  <div class="left">
+    <div class="pill">Fall Registration Open</div>
+    <h1>Green Oaks Athletic Club<span class="sub">Six Fridays of Sports &middot; Grades K&ndash;2</span></h1>
+    <div class="facts">
+      <div class="fact"><div class="k">When</div><div class="v">Aug 28 &ndash; Oct 2</div><div class="n">Fridays, 3:30&ndash;4:30 PM</div></div>
+      <div class="fact"><div class="k">Cost</div><div class="v">$120</div><div class="n">All six weeks &middot; $20/wk</div></div>
+      <div class="fact"><div class="k">Grades</div><div class="v">K&ndash;2</div><div class="n">3&ndash;5 session coming</div></div>
+    </div>
+    <div class="cta">
+      <div class="url">greenoaksathleticclub.com</div>
+      <div class="spots">Only 50 spots</div>
+    </div>
+  </div>
+  <div class="right">
+    <img src="Logo.png" alt="Green Oaks Athletic Club">
+    <div class="sports">Kickball &middot; Soccer &middot; Bennis<br>Basketball &middot; Floor Hockey<br>Capture the Flag</div>
+  </div>
+</div>
+</body>
+</html>
